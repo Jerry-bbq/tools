@@ -13,25 +13,28 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
+    - name: 设置node
       uses: actions/setup-node@v3
       with:
         node-version: 18
 
-    - name: Install Dependencies
-      run: npm install
+    - name: 设置淘宝镜像
+      run: yarn config set registry https://registry.npmmirror.com
 
-    - name: Run ESLint and Prettier
+    - name: 安装依赖
+      run: yarn install
+
+    - name: lint检查
       run: npm run lint
 
-    - name: Run Tests
+    - name: jest测试
       run: npm test
 
-    - name: Build
+    - name: 打包
       run: npm run build
 
-    - name: Generate Documentation
-      run: npm run docs
+    # - name: 生成docs文档
+    #   run: npm run docs
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,8 +50,11 @@ jobs:
       with:
         node-version: 18
 
+    - name: 设置淘宝镜像
+      run: yarn config set registry https://registry.npmmirror.com
+
     - name: Install Dependencies
-      run: npm install
+      run: yarn install
 
     - name: Publish to npm
       run: npm publish --access public
