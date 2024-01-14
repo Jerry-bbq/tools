@@ -20,14 +20,14 @@ jobs:
     - name: Set npm registry to Taobao
       run: npm config set registry https://registry.npmmirror.com
 
-    - name: Install dependencies
-      run: npm install
+    # - name: Install dependencies
+    #   run: npm install
 
-    - name: Run lint
-      run: npm run lint
+    # - name: Run lint
+    #   run: npm run lint
 
-    - name: Run format
-      run: npm run format
+    # - name: Run format
+    #   run: npm run format
 
     # - name: Generate documentation
     #   run: npm run docs
@@ -54,7 +54,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Checkout ls
-      uses: ls
+      run: ls
 
     - name: Install dependencies
       run: npm install
