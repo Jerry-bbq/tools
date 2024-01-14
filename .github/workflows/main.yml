@@ -46,6 +46,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18'
+        registry-url: 'https://registry.npmjs.org'
 
     # - name: Set npm registry to Taobao
     #   run: npm config set registry https://registry.npmmirror.com
@@ -66,7 +67,6 @@ jobs:
       run: npm pkg fix
       
     - name: Publish to npm
+      run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: | 
-        npm publish
