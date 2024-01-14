@@ -2,7 +2,7 @@
   "name": "tools",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://gitee.com/Jerry-bro/tools.git",
+  "repository": "https://github.com/Jerry-bbq/tools.git",
   "author": "Jerry <lujing2457@163.com>",
   "license": "MIT",
   "devDependencies": {
