@@ -17,8 +17,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18'
-    - name: Set npm registry to Taobao
-      run: npm config set registry https://registry.npmmirror.com
+    # - name: Set npm registry to Taobao
+    #   run: npm config set registry https://registry.npmmirror.com
 
     # - name: Install dependencies
     #   run: npm install
@@ -47,8 +47,8 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Set npm registry to Taobao
-      run: npm config set registry https://registry.npmmirror.com
+    # - name: Set npm registry to Taobao
+    #   run: npm config set registry https://registry.npmmirror.com
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -69,5 +69,4 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: | 
-        npm config set registry https://registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        npm publish --access public
+        npm publish
