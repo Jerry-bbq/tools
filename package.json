@@ -5,6 +5,9 @@
   "repository": "https://github.com/Jerry-bbq/tools.git",
   "author": "Jerry <lujing2457@163.com>",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
