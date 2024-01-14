@@ -29,14 +29,14 @@ jobs:
     - name: Run prettier
       run: npm run format
 
-    - name: Generate documentation
-      run: npm run docs
+    # - name: Generate documentation
+    #   run: npm run docs
 
-    - name: Deploy documentation to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        personal_token: ${{ secrets.MYTOKEN }}
-        publish_dir: ./docs
+    # - name: Deploy documentation to GitHub Pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     personal_token: ${{ secrets.MYTOKEN }}
+    #     publish_dir: ./docs
 
   deploy:
     runs-on: ubuntu-latest
