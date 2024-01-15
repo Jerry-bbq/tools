@@ -36,14 +36,15 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
 
-    # - name: Generate documentation
-    #   run: npm run docs
+    - name: Generate documentation
+      run: npm run docs
 
-    # - name: Deploy documentation to GitHub Pages
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     personal_token: ${{ secrets.NPM_TOKEN }}
-    #     publish_dir: ./docs
+    - name: Deploy documentation
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.TOKEN }}
+        publish_dir: ./docs
+        commit_message: ${{ github.event.head_commit.message }}
 
   deploy:
     runs-on: ubuntu-latest
