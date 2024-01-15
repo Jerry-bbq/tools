@@ -2,8 +2,16 @@
   "name": "tools",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Jerry-bbq/tools.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jerry-bbq/tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jerry-bbq/tools/issues"
+  },
+  "homepage": "https://github.com/Jerry-bbq/tools",
   "author": "Jerry <lujing2457@163.com>",
+  "keywords": ["tools", "fun-tools"],
   "license": "MIT",
   "files": [
     "dist"
