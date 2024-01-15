@@ -27,6 +27,14 @@ jobs:
 
     - name: Run format
       run: npm run format
+      
+    - name: Run Jest
+      run: npm run test
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
     # - name: Generate documentation
     #   run: npm run docs
@@ -34,7 +42,7 @@ jobs:
     # - name: Deploy documentation to GitHub Pages
     #   uses: peaceiris/actions-gh-pages@v3
     #   with:
-    #     personal_token: ${{ secrets.MYTOKEN }}
+    #     personal_token: ${{ secrets.NPM_TOKEN }}
     #     publish_dir: ./docs
 
   deploy:

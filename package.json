@@ -11,7 +11,10 @@
   },
   "homepage": "https://github.com/Jerry-bbq/tools",
   "author": "Jerry",
-  "keywords": ["tools", "fun-tools"],
+  "keywords": [
+    "tools",
+    "fun-tools"
+  ],
   "license": "MIT",
   "files": [
     "dist"
@@ -27,6 +30,7 @@
     "@types/jest": "^29.5.11",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
+    "codecov": "^3.8.3",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
