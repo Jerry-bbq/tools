@@ -1,34 +1,58 @@
-name: CI/CD
-
+name: GitHub Actions CI/CD
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
     branches:
       - main
 jobs:
+  # 每一项任务的job_id
   build:
+    # 指定运行所需要的虚拟机环境，在最新的Ubuntu操作系统上运行
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    
+    - name: 拉取 Github 源代码
       uses: actions/checkout@v4
-    - name: Setup Node.js
+    - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+    - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+    - name: List files in the repository
+      run: |
+          ls ${{ github.workspace }}
+    - run: echo "🍏 This job's status is ${{ job.status }}."
+    
+    - name: 设置 Node 运行环境
       uses: actions/setup-node@v4
       with:
         node-version: '18'
         registry-url: https://registry.npmjs.org/
-    - name: Install dependencies
+        
+    - name: 安装依赖
       run: npm install
-    - name: Run lint
+    - name: 执行lint
       run: npm run lint
-    - name: Run format
+    - name: 执行format
       run: npm run format
-    - name: Run Jest
+
+    - name: 执行jest，单元测试覆盖率报告
       run: npm run test
-    - name: Upload coverage to Codecov
+    - name: 单元测试覆盖率报告上传到 Codecov
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-    # - name: Generate documentation
-    #   run: npm run docs
+  
+    - name: 生成使用文档docs
+      run: npm run docs
+    - name: 上传文档到github pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: docs
+    
+      
   deploy:     
     runs-on: ubuntu-latest
     needs: build
