@@ -10,77 +10,78 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:    
-    - name: 拉取 Github 源代码
-      uses: actions/checkout@v4
+    steps:
+      - name: 拉取 Github 源代码
+        uses: actions/checkout@v4
 
-    - name: List files in the repository
-      run: |
+      - name: List files in the repository
+        run: |
           ls ${{ github.workspace }}
-    - run: echo "🍏 This job's status is ${{ job.status }}."
-    
-    - name: 设置 Node 运行环境
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        registry-url: https://registry.npmjs.org/
-        
-    - name: 安装依赖
-      run: npm install
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: 设置 Node 运行环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: https://registry.npmjs.org/
 
-    - name: 执行lint
-      run: npm run lint
-      
-    - name: 执行format
-      run: npm run format
+      - name: 安装依赖
+        run: npm install
 
-    - name: 执行jest，单元测试覆盖率报告
-      run: npm run test
-    - name: 单元测试覆盖率报告上传到 Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-  
-    - name: 生成使用文档docs
-      run: npm run docs
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
+      - name: 执行lint
+        run: npm run lint
+
+      - name: 执行format
+        run: npm run format
+
+      - name: 执行ls-lint
+        run: npm run ls-lint
+
+      - name: 执行jest，单元测试覆盖率报告
+        run: npm run test
+      - name: 单元测试覆盖率报告上传到 Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: 生成使用文档docs
+        run: npm run docs
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
           # Upload entire repository
           path: './docs'
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
-    
-      
-  deploy:     
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        registry-url: https://registry.npmjs.org/
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Checkout List
-      run: ls
-    - name: Install dependencies
-      run: npm install
-    - name: build
-      run: npm run build
-    - name: Run "npm pkg fix"
-      run: npm pkg fix
-    - name: Publish to npm
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: https://registry.npmjs.org/
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Checkout List
+        run: ls
+      - name: Install dependencies
+        run: npm install
+      - name: build
+        run: npm run build
+      - name: Run "npm pkg fix"
+        run: npm pkg fix
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,12 @@
+ls:
+  # 规定src目录下的目录和文件命名都是短横线命名规则
+  src:
+    .dir: kebab-case
+    .ts: kebab-case
+
+# 如果是规范化src目录的话，下面的忽略规则可以不做
+ignore:
+  - node_modules
+  - __test__
+  - coverage
+  - docs
