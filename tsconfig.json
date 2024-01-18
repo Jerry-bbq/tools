@@ -9,6 +9,30 @@
     "skipLibCheck": true,
     "removeComments": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "typedocOptions": {
+    "entryPoints": [
+      "./src/bom/index.ts",
+      "./src/color/index.ts",
+      "./src/file/index.ts",
+      "./src/regular/index.ts",
+      "./src/tree/index.ts",
+    ],
+    "includeVersion": true, // 输出选项 - 将软件包package.json中的版本version添加到项目名称中
+    "out": "./docs", // 默认是 ./docs
+    // "theme": "typedoc-theme-category-nav",
+    "name": "", // 默认是 package.json中的name
+    "readme": "none", // 是否显示readme，默认值""，表示显示
+    "hideGenerator": true, // 是否隐藏底部generator，默认值false，表示不隐藏
+    "disableSources": true, // 禁用描述代码位置
+    "navigationLinks": {
+      "github": "https://github.com/Jerry-bbq/tools.git"
+    },
+  }
 }
