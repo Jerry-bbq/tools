@@ -10,3 +10,4 @@ ignore:
   - __test__
   - coverage
   - docs
+  - "**/*.d.ts"
