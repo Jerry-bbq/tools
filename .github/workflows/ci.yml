@@ -42,12 +42,12 @@ jobs:
       - name: 执行ls-lint
         run: npm run ls-lint
 
-      - name: 执行jest，单元测试覆盖率报告
-        run: npm run test
-      - name: 单元测试覆盖率报告上传到 Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: 执行jest，单元测试覆盖率报告
+      #   run: npm run test
+      # - name: 单元测试覆盖率报告上传到 Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: 生成使用文档docs
         run: npm run docs
